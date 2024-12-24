@@ -8,13 +8,13 @@ if "%1" NEQ "uninstall" (
 
 :: Check if the second argument is provided
 if "%2"=="" (
-    echo Please specify the compiler to uninstall: rush or fast.
+    echo Please specify the compiler to uninstall: -r for Rush, -f for Fast
     exit /b
 )
 
 set /p admin_name="Enter the administrator name of the computer: "
 
-if "%2"=="rush" (
+if "%2"=="-r" (
     echo Uninstalling Rush...
     if exist "C:\Users\%admin_name%\.rush" (
         rmdir /s /q "C:\Users\%admin_name%\.rush"
@@ -34,7 +34,7 @@ if "%2"=="rush" (
     exit /b
 )
 
-if "%2"=="fast" (
+if "%2"=="-f" (
     echo Uninstalling Fast...
 
     if exist "C:\Users\user\AppData\Local\Fast" (
@@ -49,4 +49,4 @@ if "%2"=="fast" (
 )
 
 :: If an invalid compiler is specified
-echo Invalid compiler specified. Use: rush or fast.
+echo Invalid compiler specified. Use: -r for Rush or -f for Fast
